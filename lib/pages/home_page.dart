@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:the_movie_session/controllers/movie_controller.dart';
 import 'package:the_movie_session/models/movies_models.dart';
 import 'package:the_movie_session/repositories/movies_repository_imp.dart';
@@ -27,10 +28,21 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                   const SizedBox(height: 40),
-                  Text(
-                    "Movies",
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
+                  ValueListenableBuilder(
+                      valueListenable: _controller.movies,
+                      builder: (_, movies, __) {
+                        return Visibility(
+                            visible: movies != null,
+                            child: Text(
+                              "Movies",
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .headline3,
+                            )
+                        );
+                      }
+    ),
                   ValueListenableBuilder<Movies?>(
                       valueListenable: _controller.movies,
                       builder: (_, movies, __) {
@@ -43,9 +55,10 @@ class _HomePageState extends State<HomePage> {
                                 separatorBuilder: (_, __) => const Divider(),
                               )
                             : Container(
-                                height: 100,
-                                color: Colors.blue,
-                              );
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.only(top: 80.0),
+                            child: Lottie.asset('assets/lottie.json')
+                        );
                       })
                 ]))));
   }
