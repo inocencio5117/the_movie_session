@@ -63,27 +63,27 @@ class Movies {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['average_rating'] = averageRating;
-    _data['backdrop_path'] = backdropPath;
+    final data = <String, dynamic>{};
+    data['average_rating'] = averageRating;
+    data['backdrop_path'] = backdropPath;
     // _data['comments'] = comments.toJson();
-    _data['created_by'] = createdBy.toJson();
-    _data['description'] = description;
-    _data['id'] = id;
-    _data['iso_3166_1'] = iso_3166_1;
-    _data['iso_639_1'] = iso_639_1;
-    _data['name'] = name;
+    data['created_by'] = createdBy.toJson();
+    data['description'] = description;
+    data['id'] = id;
+    data['iso_3166_1'] = iso_3166_1;
+    data['iso_639_1'] = iso_639_1;
+    data['name'] = name;
     // _data['object_ids'] = objectIds.toJson();
-    _data['page'] = page;
-    _data['poster_path'] = posterPath;
-    _data['public'] = public;
-    _data['results'] = results.map((e)=>e.toJson()).toList();
-    _data['revenue'] = revenue;
-    _data['runtime'] = runtime;
-    _data['sort_by'] = sortBy;
-    _data['total_pages'] = totalPages;
-    _data['total_results'] = totalResults;
-    return _data;
+    data['page'] = page;
+    data['poster_path'] = posterPath;
+    data['public'] = public;
+    data['results'] = results.map((e)=>e.toJson()).toList();
+    data['revenue'] = revenue;
+    data['runtime'] = runtime;
+    data['sort_by'] = sortBy;
+    data['total_pages'] = totalPages;
+    data['total_results'] = totalResults;
+    return data;
   }
 }
 
@@ -356,12 +356,12 @@ class CreatedBy {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['gravatar_hash'] = gravatarHash;
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['username'] = username;
-    return _data;
+    final data = <String, dynamic>{};
+    data['gravatar_hash'] = gravatarHash;
+    data['id'] = id;
+    data['name'] = name;
+    data['username'] = username;
+    return data;
   }
 }
 
@@ -645,7 +645,7 @@ class Results {
   late final String releaseDate;
   late final String title;
   late final bool video;
-  late final double? voteAverage;
+  late final num? voteAverage;
   late final int voteCount;
 
   Results.fromJson(Map<String, dynamic> json){
@@ -667,22 +667,22 @@ class Results {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['adult'] = adult;
-    _data['backdrop_path'] = backdropPath;
-    _data['genre_ids'] = genreIds;
-    _data['id'] = id;
-    _data['media_type'] = mediaType;
-    _data['original_language'] = originalLanguage;
-    _data['original_title'] = originalTitle;
-    _data['overview'] = overview;
-    _data['popularity'] = popularity;
-    _data['poster_path'] = posterPath;
-    _data['release_date'] = releaseDate;
-    _data['title'] = title;
-    _data['video'] = video;
-    _data['vote_average'] = voteAverage;
-    _data['vote_count'] = voteCount;
-    return _data;
+    final data = <String, dynamic>{};
+    data['adult'] = adult;
+    data['backdrop_path'] = backdropPath;
+    data['genre_ids'] = genreIds;
+    data['id'] = id;
+    data['media_type'] = mediaType;
+    data['original_language'] = originalLanguage;
+    data['original_title'] = originalTitle;
+    data['overview'] = overview;
+    data['popularity'] = popularity;
+    data['poster_path'] = posterPath;
+    data['release_date'] = releaseDate;
+    data['title'] = title;
+    data['video'] = video;
+    data['vote_average'] = voteAverage;
+    data['vote_count'] = voteCount;
+    return data;
   }
 }
