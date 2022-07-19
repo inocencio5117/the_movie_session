@@ -11,7 +11,7 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(movie.title),
+          title: Text(movie.title as String),
         ),
         body: SingleChildScrollView(
             child: Padding(
@@ -22,9 +22,9 @@ class DetailsPage extends StatelessWidget {
                         height: MediaQuery.of(context).size.height * .55,
                         width: MediaQuery.of(context).size.width,
                         child: Hero(
-                            tag: movie.id,
+                            tag: movie.id as int,
                             child: Image.network(
-                              API.REQUEST_IMG(movie.posterPath),
+                              API.REQUEST_IMG(movie.posterPath as String),
                               loadingBuilder: (_, child, progress) {
                                 if (progress == null) return child;
 
@@ -33,21 +33,21 @@ class DetailsPage extends StatelessWidget {
                               },
                             ))),
                     const SizedBox(height: 20),
-                    Text(movie.overview,
+                    Text(movie.overview as String,
                         style: Theme.of(context).textTheme.subtitle1),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Icon(Icons.title),
-                        Text(movie.originalTitle)
+                        Text(movie.originalTitle as String)
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Icon(Icons.date_range_outlined),
-                        Text(movie.releaseDate)
+                        Text(movie.releaseDate as String)
                       ],
                     )
                   ],

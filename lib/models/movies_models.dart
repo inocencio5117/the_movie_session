@@ -1,44 +1,24 @@
 class Movies {
-  Movies({
-    required this.averageRating,
-    required this.backdropPath,
-    // required this.comments,
-    required this.createdBy,
-    required this.description,
-    required this.id,
-    required this.iso_3166_1,
-    required this.iso_639_1,
-    required this.name,
-    // required this.objectIds,
-    required this.page,
-    required this.posterPath,
-    required this.public,
-    required this.results,
-    required this.revenue,
-    required this.runtime,
-    required this.sortBy,
-    required this.totalPages,
-    required this.totalResults,
-  });
-  late final double averageRating;
-  late final String backdropPath;
+
+  double? averageRating;
+  String? backdropPath;
   // late final Comments comments;
-  late final CreatedBy createdBy;
-  late final String description;
-  late final int id;
-  late final String iso_3166_1;
-  late final String iso_639_1;
-  late final String name;
+  CreatedBy? createdBy;
+  String? description;
+  int? id;
+  String? iso_3166_1;
+  String? iso_639_1;
+  String? name;
   // late final ObjectIds objectIds;
-  late final int page;
-  late final String posterPath;
-  late final bool public;
-  late final List<Results> results;
-  late final int revenue;
-  late final int runtime;
-  late final String sortBy;
-  late final int totalPages;
-  late final int totalResults;
+  int? page;
+  String? posterPath;
+  bool? public;
+  List<Results>? results;
+  int? revenue;
+  int? runtime;
+  String? sortBy;
+  int? totalPages;
+  int? totalResults;
 
   Movies.fromJson(Map<String, dynamic> json){
     averageRating = json['average_rating'];
@@ -67,7 +47,7 @@ class Movies {
     data['average_rating'] = averageRating;
     data['backdrop_path'] = backdropPath;
     // _data['comments'] = comments.toJson();
-    data['created_by'] = createdBy.toJson();
+    data['created_by'] = createdBy!.toJson();
     data['description'] = description;
     data['id'] = id;
     data['iso_3166_1'] = iso_3166_1;
@@ -77,7 +57,7 @@ class Movies {
     data['page'] = page;
     data['poster_path'] = posterPath;
     data['public'] = public;
-    data['results'] = results.map((e)=>e.toJson()).toList();
+    data['results'] = results!.map((e)=>e.toJson()).toList();
     data['revenue'] = revenue;
     data['runtime'] = runtime;
     data['sort_by'] = sortBy;
@@ -85,6 +65,162 @@ class Movies {
     data['total_results'] = totalResults;
     return data;
   }
+
+//<editor-fold desc="Data Methods">
+
+  Movies({
+    required this.averageRating,
+    required this.backdropPath,
+    required this.createdBy,
+    required this.description,
+    required this.id,
+    required this.iso_3166_1,
+    required this.iso_639_1,
+    required this.name,
+    required this.page,
+    required this.posterPath,
+    required this.public,
+    required this.results,
+    required this.revenue,
+    required this.runtime,
+    required this.sortBy,
+    required this.totalPages,
+    required this.totalResults,
+  });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Movies &&
+          runtimeType == other.runtimeType &&
+          averageRating == other.averageRating &&
+          backdropPath == other.backdropPath &&
+          createdBy == other.createdBy &&
+          description == other.description &&
+          id == other.id &&
+          iso_3166_1 == other.iso_3166_1 &&
+          iso_639_1 == other.iso_639_1 &&
+          name == other.name &&
+          page == other.page &&
+          posterPath == other.posterPath &&
+          public == other.public &&
+          results == other.results &&
+          revenue == other.revenue &&
+          runtime == other.runtime &&
+          sortBy == other.sortBy &&
+          totalPages == other.totalPages &&
+          totalResults == other.totalResults);
+
+  @override
+  int get hashCode =>
+      averageRating.hashCode ^
+      backdropPath.hashCode ^
+      createdBy.hashCode ^
+      description.hashCode ^
+      id.hashCode ^
+      iso_3166_1.hashCode ^
+      iso_639_1.hashCode ^
+      name.hashCode ^
+      page.hashCode ^
+      posterPath.hashCode ^
+      public.hashCode ^
+      results.hashCode ^
+      revenue.hashCode ^
+      runtime.hashCode ^
+      sortBy.hashCode ^
+      totalPages.hashCode ^
+      totalResults.hashCode;
+
+  @override
+  String toString() {
+    return 'Movies{ averageRating: $averageRating, backdropPath: $backdropPath, createdBy: $createdBy, description: $description, id: $id, iso_3166_1: $iso_3166_1, iso_639_1: $iso_639_1, name: $name, page: $page, posterPath: $posterPath, public: $public, results: $results, revenue: $revenue, runtime: $runtime, sortBy: $sortBy, totalPages: $totalPages, totalResults: $totalResults,}';
+  }
+
+  Movies copyWith({
+    double? averageRating,
+    String? backdropPath,
+    CreatedBy? createdBy,
+    String? description,
+    int? id,
+    String? iso_3166_1,
+    String? iso_639_1,
+    String? name,
+    int? page,
+    String? posterPath,
+    bool? public,
+    List<Results>? results,
+    int? revenue,
+    int? runtime,
+    String? sortBy,
+    int? totalPages,
+    int? totalResults,
+  }) {
+    return Movies(
+      averageRating: averageRating ?? this.averageRating,
+      backdropPath: backdropPath ?? this.backdropPath,
+      createdBy: createdBy ?? this.createdBy,
+      description: description ?? this.description,
+      id: id ?? this.id,
+      iso_3166_1: iso_3166_1 ?? this.iso_3166_1,
+      iso_639_1: iso_639_1 ?? this.iso_639_1,
+      name: name ?? this.name,
+      page: page ?? this.page,
+      posterPath: posterPath ?? this.posterPath,
+      public: public ?? this.public,
+      results: results ?? this.results,
+      revenue: revenue ?? this.revenue,
+      runtime: runtime ?? this.runtime,
+      sortBy: sortBy ?? this.sortBy,
+      totalPages: totalPages ?? this.totalPages,
+      totalResults: totalResults ?? this.totalResults,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'averageRating': averageRating,
+      'backdropPath': backdropPath,
+      'createdBy': createdBy,
+      'description': description,
+      'id': id,
+      'iso_3166_1': iso_3166_1,
+      'iso_639_1': iso_639_1,
+      'name': name,
+      'page': page,
+      'posterPath': posterPath,
+      'public': public,
+      'results': results,
+      'revenue': revenue,
+      'runtime': runtime,
+      'sortBy': sortBy,
+      'totalPages': totalPages,
+      'totalResults': totalResults,
+    };
+  }
+
+  factory Movies.fromMap(Map<String, dynamic> map) {
+    return Movies(
+      averageRating: map['averageRating'] as double,
+      backdropPath: map['backdropPath'] as String,
+      createdBy: map['createdBy'] as CreatedBy,
+      description: map['description'] as String,
+      id: map['id'] as int,
+      iso_3166_1: map['iso_3166_1'] as String,
+      iso_639_1: map['iso_639_1'] as String,
+      name: map['name'] as String,
+      page: map['page'] as int,
+      posterPath: map['posterPath'] as String,
+      public: map['public'] as bool,
+      results: map['results'] as List<Results>,
+      revenue: map['revenue'] as int,
+      runtime: map['runtime'] as int,
+      sortBy: map['sortBy'] as String,
+      totalPages: map['totalPages'] as int,
+      totalResults: map['totalResults'] as int,
+    );
+  }
+
+//</editor-fold>
 }
 
 // class Comments {
@@ -615,38 +751,21 @@ class CreatedBy {
 // }
 
 class Results {
-  Results({
-    required this.adult,
-    required this.backdropPath,
-    required this.genreIds,
-    required this.id,
-    required this.mediaType,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.releaseDate,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-    required this.voteCount,
-  });
-  late final bool adult;
-  late final String backdropPath;
-  late final List<int> genreIds;
-  late final int id;
-  late final String mediaType;
-  late final String originalLanguage;
-  late final String originalTitle;
-  late final String overview;
-  late final double popularity;
-  late final String posterPath;
-  late final String releaseDate;
-  late final String title;
-  late final bool video;
-  late final num? voteAverage;
-  late final int voteCount;
+  bool? adult;
+  String? backdropPath;
+  List<int>? genreIds;
+  int? id;
+  String? mediaType;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  String? releaseDate;
+  String? title;
+  bool? video;
+  num? voteAverage;
+  int? voteCount;
 
   Results.fromJson(Map<String, dynamic> json){
     adult = json['adult'];
@@ -685,4 +804,146 @@ class Results {
     data['vote_count'] = voteCount;
     return data;
   }
+
+//<editor-fold desc="Data Methods">
+
+  Results({
+    required this.adult,
+    required this.backdropPath,
+    required this.genreIds,
+    required this.id,
+    required this.mediaType,
+    required this.originalLanguage,
+    required this.originalTitle,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.releaseDate,
+    required this.title,
+    required this.video,
+    this.voteAverage,
+    required this.voteCount,
+  });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Results &&
+          runtimeType == other.runtimeType &&
+          adult == other.adult &&
+          backdropPath == other.backdropPath &&
+          genreIds == other.genreIds &&
+          id == other.id &&
+          mediaType == other.mediaType &&
+          originalLanguage == other.originalLanguage &&
+          originalTitle == other.originalTitle &&
+          overview == other.overview &&
+          popularity == other.popularity &&
+          posterPath == other.posterPath &&
+          releaseDate == other.releaseDate &&
+          title == other.title &&
+          video == other.video &&
+          voteAverage == other.voteAverage &&
+          voteCount == other.voteCount);
+
+  @override
+  int get hashCode =>
+      adult.hashCode ^
+      backdropPath.hashCode ^
+      genreIds.hashCode ^
+      id.hashCode ^
+      mediaType.hashCode ^
+      originalLanguage.hashCode ^
+      originalTitle.hashCode ^
+      overview.hashCode ^
+      popularity.hashCode ^
+      posterPath.hashCode ^
+      releaseDate.hashCode ^
+      title.hashCode ^
+      video.hashCode ^
+      voteAverage.hashCode ^
+      voteCount.hashCode;
+
+  @override
+  String toString() {
+    return 'Results{ adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, mediaType: $mediaType, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount,}';
+  }
+
+  Results copyWith({
+    bool? adult,
+    String? backdropPath,
+    List<int>? genreIds,
+    int? id,
+    String? mediaType,
+    String? originalLanguage,
+    String? originalTitle,
+    String? overview,
+    double? popularity,
+    String? posterPath,
+    String? releaseDate,
+    String? title,
+    bool? video,
+    num? voteAverage,
+    int? voteCount,
+  }) {
+    return Results(
+      adult: adult ?? this.adult,
+      backdropPath: backdropPath ?? this.backdropPath,
+      genreIds: genreIds ?? this.genreIds,
+      id: id ?? this.id,
+      mediaType: mediaType ?? this.mediaType,
+      originalLanguage: originalLanguage ?? this.originalLanguage,
+      originalTitle: originalTitle ?? this.originalTitle,
+      overview: overview ?? this.overview,
+      popularity: popularity ?? this.popularity,
+      posterPath: posterPath ?? this.posterPath,
+      releaseDate: releaseDate ?? this.releaseDate,
+      title: title ?? this.title,
+      video: video ?? this.video,
+      voteAverage: voteAverage ?? this.voteAverage,
+      voteCount: voteCount ?? this.voteCount,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'adult': adult,
+      'backdropPath': backdropPath,
+      'genreIds': genreIds,
+      'id': id,
+      'mediaType': mediaType,
+      'originalLanguage': originalLanguage,
+      'originalTitle': originalTitle,
+      'overview': overview,
+      'popularity': popularity,
+      'posterPath': posterPath,
+      'releaseDate': releaseDate,
+      'title': title,
+      'video': video,
+      'voteAverage': voteAverage,
+      'voteCount': voteCount,
+    };
+  }
+
+  factory Results.fromMap(Map<String, dynamic> map) {
+    return Results(
+      adult: map['adult'] as bool,
+      backdropPath: map['backdropPath'] as String,
+      genreIds: map['genreIds'] as List<int>,
+      id: map['id'] as int,
+      mediaType: map['mediaType'] as String,
+      originalLanguage: map['originalLanguage'] as String,
+      originalTitle: map['originalTitle'] as String,
+      overview: map['overview'] as String,
+      popularity: map['popularity'] as double,
+      posterPath: map['posterPath'] as String,
+      releaseDate: map['releaseDate'] as String,
+      title: map['title'] as String,
+      video: map['video'] as bool,
+      voteAverage: map['voteAverage'] as num,
+      voteCount: map['voteCount'] as int,
+    );
+  }
+
+//</editor-fold>
 }

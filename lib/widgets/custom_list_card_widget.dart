@@ -24,9 +24,9 @@ class CustomListCardWidget extends StatelessWidget {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [ Hero(
-                    tag: movie.id,
+                    tag: movie.id as int,
                     child: Image.network(
-                        API.REQUEST_IMG(movie.posterPath),
+                        API.REQUEST_IMG(movie.posterPath as String),
                         loadingBuilder: (_, child, progress) {
                           if (progress == null) return child;
 
@@ -41,7 +41,7 @@ class CustomListCardWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    movie.title,
+                                    movie.title as  String,
                                     style:
                                         Theme.of(context).textTheme.headline6,
                                     softWrap: true,

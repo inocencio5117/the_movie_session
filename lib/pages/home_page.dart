@@ -43,6 +43,10 @@ class _HomePageState extends State<HomePage> {
                         );
                       }
     ),
+                  const SizedBox(height: 40),
+                  TextField(
+                    onChanged: _controller.onChanged,
+                  ),
                   ValueListenableBuilder<Movies?>(
                       valueListenable: _controller.movies,
                       builder: (_, movies, __) {
@@ -50,8 +54,8 @@ class _HomePageState extends State<HomePage> {
                             ? ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: movies.results.length,
-                                itemBuilder: (_, idx) => CustomListCardWidget(movie: movies.results[idx]),
+                                itemCount: movies.results!.length,
+                                itemBuilder: (_, idx) => CustomListCardWidget(movie: movies.results![idx]),
                                 separatorBuilder: (_, __) => const Divider(),
                               )
                             : Container(
