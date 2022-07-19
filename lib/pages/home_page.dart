@@ -34,18 +34,20 @@ class _HomePageState extends State<HomePage> {
                         return Visibility(
                             visible: movies != null,
                             child: Text(
-                              "Movies",
-                              style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .headline3,
-                            )
-                        );
-                      }
-    ),
+                              "The Movie Session",
+                              style: Theme.of(context).textTheme.headline3,
+                            ));
+                      }),
                   const SizedBox(height: 40),
                   TextField(
                     onChanged: _controller.onChanged,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                      fillColor: Colors.white30,
+                      focusColor: Colors.white30,
+                      hoverColor: Colors.white30,
+                    ),
+                    cursorColor: Colors.white30,
                   ),
                   ValueListenableBuilder<Movies?>(
                       valueListenable: _controller.movies,
@@ -55,14 +57,14 @@ class _HomePageState extends State<HomePage> {
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: movies.results!.length,
-                                itemBuilder: (_, idx) => CustomListCardWidget(movie: movies.results![idx]),
+                                itemBuilder: (_, idx) => CustomListCardWidget(
+                                    movie: movies.results![idx]),
                                 separatorBuilder: (_, __) => const Divider(),
                               )
                             : Container(
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.only(top: 80.0),
-                            child: Lottie.asset('assets/lottie.json')
-                        );
+                                alignment: Alignment.center,
+                                margin: const EdgeInsets.only(top: 80.0),
+                                child: Lottie.asset('assets/lottie.json'));
                       })
                 ]))));
   }

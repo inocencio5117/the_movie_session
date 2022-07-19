@@ -40,6 +40,7 @@ class CustomListCardWidget extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  const SizedBox(height: 10,),
                                   Text(
                                     movie.title as  String,
                                     style:
@@ -51,7 +52,8 @@ class CustomListCardWidget extends StatelessWidget {
                                   Text(
                                       'Popularidade: ${movie.popularity.toString()}'),
                                   const Spacer(),
-                                  Text('Nota: ${movie.voteAverage} / 10')
+                                  Text('Nota: ${movie.voteAverage} / 10'),
+                                  const SizedBox(height: 10,)
                                 ],
                               )))
                     ]))));
