@@ -23,15 +23,17 @@ class CustomListCardWidget extends StatelessWidget {
                 decoration: const BoxDecoration(color: Colors.black54),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.network(
+                    children: [ Hero(
+                    tag: movie.id,
+                    child: Image.network(
                         API.REQUEST_IMG(movie.posterPath),
                         loadingBuilder: (_, child, progress) {
                           if (progress == null) return child;
 
                           return const CircularProgressIndicator.adaptive();
                         },
-                      ),
+                      )
+                    ),
                       Expanded(
                           child: Padding(
                               padding: const EdgeInsets.all(20),
