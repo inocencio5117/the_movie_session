@@ -33,22 +33,31 @@ class DetailsPage extends StatelessWidget {
                               },
                             ))),
                     const SizedBox(height: 20),
-                    Text(movie.overview as String,
-                        style: Theme.of(context).textTheme.subtitle1),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(Icons.title),
-                        Text(movie.originalTitle as String)
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Icon(Icons.date_range_outlined),
-                        Text(movie.releaseDate as String)
-                      ],
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Column(children: [
+                        Text(movie.overview as String,
+                            style: Theme.of(context).textTheme.subtitle1),
+                        const SizedBox(height: 25),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const Icon(Icons.title),
+                            const SizedBox(width: 40),
+                            Text(movie.originalTitle as String)
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const Icon(Icons.date_range_outlined),
+                            const SizedBox(width: 40),
+                            Text(movie.releaseDate as String)
+                          ],
+                        ),
+                      ]),
                     )
                   ],
                 ))));
