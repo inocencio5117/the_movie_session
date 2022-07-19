@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_movie_session/pages/details_page.dart';
 import '../models/movies_models.dart';
 import '../utils/apis.utils.dart';
 
@@ -8,37 +9,49 @@ class CustomListCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 200,
-        decoration: const BoxDecoration(color: Colors.black54),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Image.network(
-            API.REQUEST_IMG(movie.posterPath),
-            loadingBuilder: (_, child, progress) {
-              if (progress == null) return child;
-
-              return const CircularProgressIndicator.adaptive();
+    return Material(
+        child: InkWell(
+            onTap: () {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (_) => DetailsPage(movie: movie),
+                fullscreenDialog: true,
+                )
+              );
             },
-          ),
-          Expanded(
-              child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            child: Container(
+                height: 200,
+                decoration: const BoxDecoration(color: Colors.black54),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        movie.title,
-                        style: Theme.of(context).textTheme.headline6,
-                        softWrap: true,
-                        overflow: TextOverflow.visible,
+                      Image.network(
+                        API.REQUEST_IMG(movie.posterPath),
+                        loadingBuilder: (_, child, progress) {
+                          if (progress == null) return child;
+
+                          return const CircularProgressIndicator.adaptive();
+                        },
                       ),
-                      const Spacer(),
-                      Text('Popularidade: ${movie.popularity.toString()}'),
-                      const Spacer(),
-                      Text('Nota: ${movie.voteAverage} / 10')
-                    ],
-                  )))
-        ]));
+                      Expanded(
+                          child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    movie.title,
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                    softWrap: true,
+                                    overflow: TextOverflow.visible,
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                      'Popularidade: ${movie.popularity.toString()}'),
+                                  const Spacer(),
+                                  Text('Nota: ${movie.voteAverage} / 10')
+                                ],
+                              )))
+                    ]))));
   }
 }
