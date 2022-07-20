@@ -34,7 +34,7 @@ class CustomListCardWidget extends StatelessWidget {
                                   if (progress == null) return child;
 
                                   return const Padding(
-                                      padding: EdgeInsets.only(left: 25),
+                                      padding: EdgeInsets.symmetric(horizontal: 33),
                                       child:
                                           CircularProgressIndicator.adaptive());
                                 },
