@@ -40,9 +40,8 @@ class CustomListCardWidget extends StatelessWidget {
                                 },
                               ))
                           : Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 53),
-                            color: Colors.white30,
-                            child: const Icon(Icons.error, size: 30),
+                            margin: const EdgeInsets.symmetric(horizontal: 57),
+                            child: const Icon(Icons.error, size: 30)
                       ),
                       Expanded(
                           child: Padding(
