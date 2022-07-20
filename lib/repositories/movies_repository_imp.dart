@@ -14,4 +14,10 @@ class MoviesRepositoryImp implements MoviesRepository {
 
     return Movies.fromJson(result.data);
   }
+
+  @override
+  Future<Search> getSearchedMovies(String query) async {
+    var result = await _dioService.getDio().get(API.REQUEST_SEARCH_MOVIE(query.trim()));
+    return Search.fromJson(result.data);
+  }
 }

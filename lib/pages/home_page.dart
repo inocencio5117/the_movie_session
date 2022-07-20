@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   final MovieController _controller = MovieController(
     MoviesRepositoryImp(DioServiceImp()),
   );
+  final txtFieldController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,31 +42,54 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 40),
                   TextField(
                     onChanged: _controller.onChanged,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                    controller: txtFieldController,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
                       fillColor: Colors.white30,
                       focusColor: Colors.white30,
                       hoverColor: Colors.white30,
+                      suffixIcon: GestureDetector(
+                          child: const Icon(Icons.close, color: Colors.white30),
+                          onTap: () {
+                            txtFieldController.clear();
+                            FocusScope.of(context).requestFocus(FocusNode());
+                            _controller.onChanged('');
+                          }),
                     ),
                     cursorColor: Colors.white30,
                   ),
+                  txtFieldController.value.text != ""
+                      ? ValueListenableBuilder<Search?>(
+                          valueListenable: _controller.search,
+                          builder: (_, movies, __) => ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: movies!.results.length,
+                              itemBuilder: (_, idx) => CustomListCardWidget(
+                                  movie: movies.results[idx]),
+                              separatorBuilder: (_, __) => const Divider(),
+                            ))
+                      :
                   ValueListenableBuilder<Movies?>(
-                      valueListenable: _controller.movies,
-                      builder: (_, movies, __) {
-                        return movies != null
-                            ? ListView.separated(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: movies.results!.length,
-                                itemBuilder: (_, idx) => CustomListCardWidget(
-                                    movie: movies.results![idx]),
-                                separatorBuilder: (_, __) => const Divider(),
-                              )
-                            : Container(
-                                alignment: Alignment.center,
-                                margin: const EdgeInsets.only(top: 80.0),
-                                child: Lottie.asset('assets/lottie.json'));
-                      })
+                          valueListenable: _controller.movies,
+                          builder: (_, movies, __) {
+                            return movies != null
+                                ? ListView.separated(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: movies.results!.length,
+                                    itemBuilder: (_, idx) =>
+                                        CustomListCardWidget(
+                                            movie: movies.results![idx]),
+                                    separatorBuilder: (_, __) =>
+                                        const Divider(),
+                                  )
+                                : Container(
+                                    alignment: Alignment.center,
+                                    margin: const EdgeInsets.only(top: 80.0),
+                                    child: Lottie.asset('assets/lottie.json'));
+                          })
                 ]))));
   }
 }
