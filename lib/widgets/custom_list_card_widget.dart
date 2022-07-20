@@ -12,37 +12,49 @@ class CustomListCardWidget extends StatelessWidget {
     return Material(
         child: InkWell(
             onTap: () {
-              Navigator.push(context,
-                MaterialPageRoute(builder: (_) => DetailsPage(movie: movie),
-                fullscreenDialog: true,
-                )
-              );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => DetailsPage(movie: movie),
+                    fullscreenDialog: true,
+                  ));
             },
             child: Container(
                 height: 200,
                 decoration: const BoxDecoration(color: Colors.black54),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [ Hero(
-                    tag: movie.id as int,
-                    child: Image.network(
-                        API.REQUEST_IMG(movie.posterPath as String),
-                        loadingBuilder: (_, child, progress) {
-                          if (progress == null) return child;
+                    children: [
+                      movie.posterPath is String
+                          ? Hero(
+                              tag: movie.id as int,
+                              child: Image.network(
+                                API.REQUEST_IMG(movie.posterPath as String),
+                                loadingBuilder: (_, child, progress) {
+                                  if (progress == null) return child;
 
-                          return const CircularProgressIndicator.adaptive();
-                        },
-                      )
-                    ),
+                                  return const Padding(
+                                      padding: EdgeInsets.only(left: 25),
+                                      child:
+                                          CircularProgressIndicator.adaptive());
+                                },
+                              ))
+                          : Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 53),
+                            color: Colors.white30,
+                            child: const Icon(Icons.error, size: 30),
+                      ),
                       Expanded(
                           child: Padding(
                               padding: const EdgeInsets.all(20),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const SizedBox(height: 10,),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
                                   Text(
-                                    movie.title as  String,
+                                    movie.title as String,
                                     style:
                                         Theme.of(context).textTheme.headline6,
                                     softWrap: true,
@@ -53,7 +65,9 @@ class CustomListCardWidget extends StatelessWidget {
                                       'Popularidade: ${movie.popularity.toString()}'),
                                   const Spacer(),
                                   Text('Nota: ${movie.voteAverage} / 10'),
-                                  const SizedBox(height: 10,)
+                                  const SizedBox(
+                                    height: 10,
+                                  )
                                 ],
                               )))
                     ]))));
